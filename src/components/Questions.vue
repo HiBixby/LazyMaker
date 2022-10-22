@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen mx-10 flex flex-col">
+  <div class="min-h-screen mx-10 flex flex-col">
     <!-- progress bar -->
     <div class="progress-bar py-5">
       <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
