@@ -23,4 +23,4 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-https://hibixby.github.io/TestMyType_Vue
+https://hibixby.github.io/TestMyType_Vue/dist
