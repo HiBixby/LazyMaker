@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Vue from "vue";
-import { createWebHistory, createRouter } from "vue-router";
+import { createWebHashHistory, createRouter } from "vue-router";
 import Main from "../components/Main.vue";
 import Questions from "../components/Questions.vue";
 import Result from "../components/Result.vue";
@@ -36,7 +36,7 @@ const routes = [
 ]; //라우팅 패스, 컴포넌트 등 정의
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
 
