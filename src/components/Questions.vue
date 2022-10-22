@@ -3,7 +3,7 @@
     <!-- progress bar -->
     <div class="progress-bar py-5">
       <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-        <div class="bg-blue-600 h-2.5 rounded-full" :style="{'width': ((pointer+1)/questions.length)*100+'%'}"></div>
+        <div class="bg-blue-600 h-2.5 rounded-full transition-all" :style="{'width': ((pointer+1)/questions.length)*100+'%'}"></div>
       </div>
     </div>
     <!-- prev button -->
