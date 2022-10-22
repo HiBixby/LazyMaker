@@ -3,10 +3,18 @@
 </template>
 
 <script>
-
+/* eslint-disable */
 export default {
   name: "App",
-  components: { },
+  components: {},
+  watch: {
+    $route: {
+      immediate: true,
+      handler(to, from) {
+        document.title = to.meta.title || "Some Default Title";
+      },
+    },
+  },
 };
 </script>
 
