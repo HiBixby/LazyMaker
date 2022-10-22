@@ -1,5 +1,5 @@
 <template>
-  <div class="text-3xl font-bold">질문</div>
+  <div class="text-3xl font-bold">결과</div>
 </template>
 
 <script>
