@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full flex flex-col justify-center items-center">
+  <div class="min-h-full flex flex-col justify-center items-center">
     <div class="">ㅁㅁ로 알아보는 유형 테스트</div>
     <div class="text-3xl font-bold">나는 어떤 유형일까?</div>
     <img class="rounded-full my-24 w-48" src="../assets/skyblue.png" />

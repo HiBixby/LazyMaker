@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full p-10 flex flex-col justify-center">
+  <div class="min-h-full p-10 flex flex-col justify-center">
     <div class="제목">
       <div class="text-l font-bold">힐링은 나의 몫</div>
       <div class="text-2xl font-bold">러스틱 라이프를 즐기는 차크닉</div>
