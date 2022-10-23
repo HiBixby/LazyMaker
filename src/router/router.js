@@ -3,7 +3,8 @@ import Vue from "vue";
 import { createWebHashHistory, createRouter } from "vue-router";
 import Main from "../components/Main.vue";
 import Questions from "../components/Questions.vue";
-import Result from "../components/Result.vue";
+import Result from "../components/Result.vue"; 
+import Loader from "../components/Loader.vue"
 const routes = [
   {
     path: "/",
@@ -23,6 +24,14 @@ const routes = [
     component: Questions,
     meta: {
       title: "질문",
+    },
+  },
+  {
+    path: "/loader",
+    name: "로딩",
+    component: Loader,
+    meta: {
+      title: "분석중",
     },
   },
   {

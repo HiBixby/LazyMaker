@@ -42,7 +42,7 @@ export default {
       if (this.pointer < this.questions.length - 1) {
         this.pointer += 1;
       } else {
-         this.$router.push('/result');
+         this.$router.push('/loader');
       }
     },
     ShowPrevQuestion() {
