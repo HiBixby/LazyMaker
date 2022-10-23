@@ -40,15 +40,29 @@ export default {
   },
   methods: {
     ShareLink() {
-      window.navigator.share({
-        title: "나의 유형 테스트", // 공유될 제목
-        text: "설명", // 공유될 설명
-        url: "https://hibixby.github.io/TestMyType_Vue/dist/#/result", // 공유될 URL
-        files: [], // 공유할 파일 배열
-      });
+      if (navigator.share) {
+        navigator.share({
+          title: "나의 유형 테스트", // 공유될 제목
+          text: "설명", // 공유될 설명
+          url: window.document.location.href, // 공유될 URL
+          files: [], // 공유할 파일 배열
+        });
+      } else {
+        let url = ""; // <a>태그에서 호출한 함수인 clip 생성
+        const textarea = document.createElement("textarea");
+        //url 변수 생성 후, textarea라는 변수에 textarea의 요소를 생성
+
+        document.body.appendChild(textarea); //</body> 바로 위에 textarea를 추가(임시 공간이라 위치는 상관 없음)
+        url = window.document.location.href; //url에는 현재 주소값을 넣어줌
+        textarea.value = url; // textarea 값에 url를 넣어줌
+        textarea.select(); //textarea를 설정
+        document.execCommand("copy"); // 복사
+        document.body.removeChild(textarea); //extarea 요소를 없애줌
+        alert("링크가 복사되었어요!");
+      }
     },
-    Retry(){
-      this.$router.push('/main');
+    Retry() {
+      this.$router.push("/main");
     },
   },
 };
