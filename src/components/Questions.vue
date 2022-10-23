@@ -1,20 +1,20 @@
 <template>
   <div class="min-h-screen mx-10 flex flex-col">
     <!-- progress bar -->
-    <div class="progress-bar py-5">
-      <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-        <div class="bg-blue-600 h-2.5 rounded-full transition-all" :style="{'width': ((pointer+1)/questions.length)*100+'%'}"></div>
+    <div class="progress-bar py-10 flex-none">
+      <div class="w-full bg-gray-200 rounded-full h-3.5 dark:bg-gray-700">
+        <div class="bg-blue-600 h-3.5 rounded-full transition-all" :style="{'width': ((pointer+1)/questions.length)*100+'%'}"></div>
       </div>
     </div>
     <!-- prev button -->
-    <div class="text-left">
-      <button @click="ShowPrevQuestion()" class="text-3xl">
+    <div class="text-left flex-none">
+      <button @click="ShowPrevQuestion()" class="text-2xl text-gray-500">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
     </div>
     <!-- Question -->
-    <div class="flex flex-col">
-      <div class="text-3xl font-bold">Q.{{ pointer + 1 }}</div>
+    <div class="flex flex-col flex-1 justify-center">
+      <div class="text-3xl font-black">Q.{{ pointer + 1 }}</div>
       <div class="text-2xl">
         {{ questions[pointer].title }}
       </div>
