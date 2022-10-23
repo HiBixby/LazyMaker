@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col justify-center items-center">
+  <div class="h-full flex flex-col justify-center items-center">
     <div class="w-36">
       <svg
         version="1.1"

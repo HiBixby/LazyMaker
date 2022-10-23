@@ -11,8 +11,7 @@ export default {
     $route: {
       immediate: true,
       handler(to, from) {
-        document.title =
-          "테스트 : " + to.meta.title || "나의 유형 테스트";
+        document.title = "테스트 : " + to.meta.title || "나의 유형 테스트";
       },
     },
   },
@@ -20,6 +19,10 @@ export default {
 </script>
 
 <style>
+html,
+body {
+  height: 100%;
+}
 #app {
   font-family: "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
@@ -29,5 +32,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100%;
 }
 </style>
