@@ -7,7 +7,7 @@
       </div>
     </div>
     <!-- prev button -->
-    <div class="">
+    <div class="text-left">
       <button @click="ShowPrevQuestion()" class="text-3xl">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
