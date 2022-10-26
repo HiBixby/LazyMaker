@@ -5,7 +5,7 @@
       <div class="w-full bg-gray-200 rounded-full h-3.5 dark:bg-gray-700">
         <div
           class="bg-blue-600 h-3.5 rounded-full transition-all"
-          :style="{ width: ((pointer + 1) / questions.length) * 100 + '%' }"
+          :style="{ width: (pointer / (questions.length - 1)) * 100 + '%' }"
         ></div>
       </div>
     </div>
@@ -17,7 +17,7 @@
     </div>
     <!-- Question -->
     <div class="flex flex-col flex-1 justify-center">
-      <div class="text-3xl font-black">Q.{{ pointer + 1 }}</div>
+      <div class="text-3xl font-black">Q{{ pointer + 1 }}</div>
       <div class="text-2xl">
         {{ questions[pointer].title }}
       </div>
