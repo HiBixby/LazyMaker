@@ -3,7 +3,13 @@ module.exports = {
   purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        custom: {
+          blue: "#0371e8",
+        },
+      },
+    },
   },
   plugins: [],
-}
+};
