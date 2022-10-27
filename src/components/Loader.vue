@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-full flex flex-col justify-center items-center">
-    <div class="w-36">
+    <div class="w-[29%] h-[13%]">
       <svg
         version="1.1"
         id="L1"
@@ -14,11 +14,11 @@
       >
         <circle
           fill="none"
-          stroke="#000"
+          stroke="#0371e8"
           stroke-width="3"
           stroke-linecap="round"
           stroke-miterlimit="15"
-          stroke-dasharray="10,8"
+          stroke-dasharray="8"
           cx="50"
           cy="50"
           r="47"
@@ -35,7 +35,7 @@
         </circle>
       </svg>
     </div>
-    <div class="my-10 text-2xl font-bold">취향분석중...</div>
+    <div class="my-[1.438rem] text-[1.25rem] font-semibold">분석중...</div>
   </div>
 </template>
 
@@ -44,9 +44,9 @@ export default {
   name: "LoaderPage",
   props: {},
   created() {
-    setTimeout(() => {
-      this.$router.push("/result");
-    }, 1000);
+    // setTimeout(() => {
+    //   this.$router.push("/result");
+    // }, 1000);
   },
 };
 </script>
