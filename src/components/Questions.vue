@@ -93,7 +93,7 @@
         </div>
       </div>
     </div>
-    <button @click="ShowNextPage()">다음으로 넘어가기</button>
+    <button class="btn-next" @click="ShowNextPage()">다음으로 넘어가기</button>
   </div>
 </template>
 
@@ -133,7 +133,7 @@ export default {
         {
           id: 3,
           title:
-            "현재 중,고등학교 수업시간보다 강의시간에 많이 졸았던 경험이 있다.",
+            "현재 중,고등학교 수업시간보다 강의시간에\n많이 졸았던 경험이 있다.",
         },
         {
           id: 4,
@@ -150,7 +150,7 @@ export default {
         {
           id: 7,
           title:
-            '회의를 할때, 메모를 잘 적었다고 생각했지만 "휴먼졸림체" 로 적힌 경험이 있다.',
+            '회의를 할때, 메모를 잘 적었다고 생각했지만\n"휴먼졸림체" 로 적힌 경험이 있다.',
         },
         {
           id: 8,
@@ -247,6 +247,7 @@ export default {
   line-height: 1.41;
   letter-spacing: -0.43px;
   margin: 0 0 1.313rem 0;
+  white-space: pre-line;
 }
 fieldset {
   margin: 0 0 3.75rem 0;
@@ -264,5 +265,10 @@ label {
 input[type="radio"]:checked + label {
   background: #0371e8;
   color: white;
+}
+.btn-next{
+  font-weight:600;
+  color:white;
+  background-color: #0371e8;
 }
 </style>
