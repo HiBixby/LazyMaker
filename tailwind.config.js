@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         custom: {
           blue: "#0371e8",
+          sky:"#83b3ff",
         },
       },
     },
