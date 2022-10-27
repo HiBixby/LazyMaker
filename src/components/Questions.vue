@@ -83,17 +83,33 @@
         <!-- option -->
         <div class="options">
           <fieldset>
-            <input type="radio" v-bind:id="'yes_' + (i + page)" />
-            <label v-bind:for="'yes_' + (i + page)">그렇다</label>
-            <input type="radio" v-bind:id="'idk_' + (i + page)" />
-            <label v-bind:for="'idk_' + (i + page)">잘모르겠다</label>
-            <input type="radio" v-bind:id="'no_' + (i + page)" />
-            <label v-bind:for="'no_' + (i + page)">아니다</label>
+            <input
+              type="radio"
+              v-bind:id="'yes_' + (i + page * 4)"
+              v-bind:group="i + page * 4"
+            />
+            <label v-bind:for="'yes_' + (i + page * 4)">그렇다</label>
+            <input
+              type="radio"
+              v-bind:id="'idk_' + (i + page * 4)"
+              v-bind:group="i + page * 4"
+            />
+            <label v-bind:for="'idk_' + (i + page * 4)">잘모르겠다</label>
+            <input
+              type="radio"
+              v-bind:id="'no_' + (i + page * 4)"
+              v-bind:group="i + page * 4"
+            />
+            <label v-bind:for="'no_' + (i + page * 4)">아니다</label>
           </fieldset>
         </div>
       </div>
     </div>
-    <button class="btn-next" @click="ShowNextPage()">다음으로 넘어가기</button>
+    <div class="btn-next__container">
+      <button class="btn-next" type="submit" @click="ShowNextPage()">
+        {{ btnMsg[page] }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -207,6 +223,13 @@ export default {
           title: "조수석에 탑승하면 나도 모르게 잠에든다.",
         },
       ],
+      btnMsg: [
+        "다음으로 넘어가기",
+        "다음으로 넘어가기",
+        "거의 다왔어요!",
+        "마지막이에요!",
+        "결과 확인하기",
+      ],
     };
   },
 };
@@ -266,9 +289,15 @@ input[type="radio"]:checked + label {
   background: #0371e8;
   color: white;
 }
-.btn-next{
-  font-weight:600;
-  color:white;
+.btn-next {
+  font-weight: 600;
+  color: white;
   background-color: #0371e8;
+  width: 10.875rem;
+  padding: 1rem 0rem;
+  border-radius: 7px;
+  font-size: 0.813rem;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  margin: 0 0 6.25rem 0;
 }
 </style>
