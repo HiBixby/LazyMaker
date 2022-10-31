@@ -154,6 +154,7 @@ export default {
     },
     ShowPrevPage() {
       if (this.page) {
+        window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
         this.page -= 1;
       } else {
         history.back();
@@ -166,13 +167,11 @@ export default {
       let next_id = "question__" + event_question_number;
       console.log(event_id, event_question_number, next_id);
       console.log(document.getElementById(next_id));
-      document
-        .getElementById(next_id)
-        .scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "start",
-        });
+      document.getElementById(next_id).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "start",
+      });
     },
   },
   data() {
