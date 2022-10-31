@@ -135,6 +135,7 @@ export default {
     ShowNextPage() {
       if (this.page < 4) {
         this.page += 1;
+        window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
       } else {
         this.selected.slice(1, 5);
         this.selected.slice(5, 9);
