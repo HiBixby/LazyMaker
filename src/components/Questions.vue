@@ -86,19 +86,25 @@
             <input
               type="radio"
               v-bind:id="'yes_' + (i + page * 4)"
-              v-bind:group="i + page * 4"
+              v-bind:name="i + page * 4"
+              v-model="selected[i+page*4]"
+              v-bind:value="'yes_' + (i + page * 4)"
             />
             <label v-bind:for="'yes_' + (i + page * 4)">그렇다</label>
             <input
               type="radio"
               v-bind:id="'idk_' + (i + page * 4)"
-              v-bind:group="i + page * 4"
+              v-bind:name="i + page * 4"
+              v-model="selected[i+page*4]"
+              v-bind:value="'idk_' + (i + page * 4)"
             />
             <label v-bind:for="'idk_' + (i + page * 4)">잘모르겠다</label>
             <input
               type="radio"
               v-bind:id="'no_' + (i + page * 4)"
-              v-bind:group="i + page * 4"
+              v-bind:name="i + page * 4"
+              v-model="selected[i+page*4]"
+              v-bind:value="'no_' + (i + page * 4)"
             />
             <label v-bind:for="'no_' + (i + page * 4)">아니다</label>
           </fieldset>
@@ -141,88 +147,109 @@ export default {
         {
           id: 1,
           title: "지루해서 하품을 자연스럽게 한 경험이 있다.",
+          answer: 0,
         },
         {
           id: 2,
           title: "강의시간에 졸다가 나도 모르게 잠든 적이 있다.",
+          answer: 0,
         },
         {
           id: 3,
           title:
             "현재 중,고등학교 수업시간보다 강의시간에\n많이 졸았던 경험이 있다.",
+          answer: 0,
         },
         {
           id: 4,
           title: "교수님의 목소리가 자장가처럼 나긋나긋하게 들린다.",
+          answer: 0,
         },
         {
           id: 5,
           title: "인강을 듣다가 졸린적이 있다.",
+          answer: 0,
         },
         {
           id: 6,
           title: "회의시간에 졸다가 나도 모르게 잠든 적이 있다.",
+          answer: 0,
         },
         {
           id: 7,
           title:
             '회의를 할때, 메모를 잘 적었다고 생각했지만\n"휴먼졸림체" 로 적힌 경험이 있다.',
+          answer: 0,
         },
         {
           id: 8,
           title: "회의 중, 졸다가 대답한적이 있다.",
+          answer: 0,
         },
         {
           id: 9,
           title: "회의내용보다 메모지에 그린 낙서가 더 재미있다.",
+          answer: 0,
         },
         {
           id: 10,
           title: "나는 주로 조용하면 편안해진다.",
+          answer: 0,
         },
         {
           id: 11,
           title:
             "잠을 잘 잤어도 내가 흥미로운 일이 아니라면,\n쉽게 지루함을 느끼고는 한다.",
+          answer: 0,
         },
         {
           id: 12,
           title: "조용한곳에서 쉽게 피로해진다.",
+          answer: 0,
         },
         {
           id: 13,
           title: "음식을 먹다가 졸아서 잔적이 있다.",
+          answer: 0,
         },
         {
           id: 14,
           title: "나는 뜬 눈으로 자주 새벽을 지새고는 한다.",
+          answer: 0,
         },
         {
           id: 15,
           title:
             "나는 침대에 누웠을때, 우울감과 후회가 되었던\n일들이 생각나 잠을 설치곤 한다.",
+          answer: 0,
         },
         {
           id: 16,
           title: "핸드폰을 손에 쥔 채 잠든적이 있다.",
+          answer: 0,
         },
         {
           id: 17,
           title: "나는 남들보다 쉽게 지루해진다.",
+          answer: 0,
         },
         {
           id: 18,
           title: "조용한것보다 유치한것 들에 쉽게 지루해진다.",
+          answer: 0,
         },
         {
           id: 19,
           title: "피곤한것 보다 지루할때 더 잠이 잘온다.",
+          answer: 0,
         },
         {
           id: 20,
           title: "조수석에 탑승하면 나도 모르게 잠에든다.",
+          answer: 0,
         },
       ],
+      selected: [],
       btnMsg: [
         "다음으로 넘어가기",
         "다음으로 넘어가기",
