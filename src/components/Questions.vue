@@ -76,8 +76,16 @@
     <!-- Question -->
     <div class="questions_container overflow-auto">
       <div class="q" v-for="i in 4" :key="i + page * 4">
-        <div class="question__number">Q{{ i + page * 4 }}</div>
-        <div class="question__content">
+        <div
+          class="question__number"
+          v-bind:class="{ done: selected[i + page * 4] }"
+        >
+          Q{{ i + page * 4 }}
+        </div>
+        <div
+          class="question__content"
+          v-bind:class="{ done: selected[i + page * 4] }"
+        >
           {{ questions[i + page * 4 - 1].title }}
         </div>
         <!-- option -->
@@ -87,24 +95,24 @@
               type="radio"
               v-bind:id="'yes_' + (i + page * 4)"
               v-bind:name="i + page * 4"
-              v-model="selected[i+page*4]"
-              v-bind:value="'yes_' + (i + page * 4)"
+              v-model="selected[i + page * 4]"
+              value="yes"
             />
             <label v-bind:for="'yes_' + (i + page * 4)">그렇다</label>
             <input
               type="radio"
               v-bind:id="'idk_' + (i + page * 4)"
               v-bind:name="i + page * 4"
-              v-model="selected[i+page*4]"
-              v-bind:value="'idk_' + (i + page * 4)"
+              v-model="selected[i + page * 4]"
+              value="idk"
             />
             <label v-bind:for="'idk_' + (i + page * 4)">잘모르겠다</label>
             <input
               type="radio"
               v-bind:id="'no_' + (i + page * 4)"
               v-bind:name="i + page * 4"
-              v-model="selected[i+page*4]"
-              v-bind:value="'no_' + (i + page * 4)"
+              v-model="selected[i + page * 4]"
+              value="no"
             />
             <label v-bind:for="'no_' + (i + page * 4)">아니다</label>
           </fieldset>
@@ -128,6 +136,10 @@ export default {
       if (this.page < 4) {
         this.page += 1;
       } else {
+        this.selected.slice(1, 5);
+        this.selected.slice(5, 9);
+        this.selected.slice(9, 13);
+        this.selected.slice(13, 21);
         this.$router.push("/loader");
       }
     },
@@ -298,6 +310,9 @@ export default {
   letter-spacing: -0.43px;
   margin: 0 0 1.313rem 0;
   white-space: pre-line;
+}
+.done {
+  color: #afafaf;
 }
 fieldset {
   margin: 0 0 3.75rem 0;
