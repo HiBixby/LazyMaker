@@ -75,7 +75,12 @@
     </div>
     <!-- Question -->
     <div class="questions_container overflow-auto">
-      <div class="q" v-for="i in 4" :key="i + page * 4">
+      <div
+        v-bind:id="'question__' + (i + page * 4)"
+        class="q"
+        v-for="i in 4"
+        :key="i + page * 4"
+      >
         <div
           class="question__number"
           v-bind:class="{ done: selected[i + page * 4] }"
@@ -97,6 +102,7 @@
               v-bind:name="i + page * 4"
               v-model="selected[i + page * 4]"
               value="yes"
+              @click="ScrollToNextQuestion"
             />
             <label v-bind:for="'yes_' + (i + page * 4)">그렇다</label>
             <input
@@ -105,6 +111,7 @@
               v-bind:name="i + page * 4"
               v-model="selected[i + page * 4]"
               value="idk"
+              @click="ScrollToNextQuestion"
             />
             <label v-bind:for="'idk_' + (i + page * 4)">잘모르겠다</label>
             <input
@@ -113,6 +120,7 @@
               v-bind:name="i + page * 4"
               v-model="selected[i + page * 4]"
               value="no"
+              @click="ScrollToNextQuestion"
             />
             <label v-bind:for="'no_' + (i + page * 4)">아니다</label>
           </fieldset>
@@ -150,6 +158,21 @@ export default {
       } else {
         history.back();
       }
+    },
+    ScrollToNextQuestion(event) {
+      console.log("clicked");
+      let event_id = event.currentTarget.id;
+      let event_question_number = parseInt(event_id.split("_")[1]);
+      let next_id = "question__" + event_question_number;
+      console.log(event_id, event_question_number, next_id);
+      console.log(document.getElementById(next_id));
+      document
+        .getElementById(next_id)
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "start",
+        });
     },
   },
   data() {
