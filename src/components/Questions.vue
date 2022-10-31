@@ -12,7 +12,7 @@
       </div>
       <!-- prev button -->
       <div class="text-left flex-none">
-        <button @click="ShowPrevPage()" class="btn-prev">
+        <button @click="ShowPrevPage()" class="btn-prev" v-if="page">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="11.28"
