@@ -2,7 +2,7 @@
   <div class="result">
     <p class="tag">#누구보다 열심히, 열정적으로</p>
     <p class="type">헤르미온느 유형</p>
-    <img src="../assets/result-A.svg" />
+    <img class="img" src="../assets/result-A.svg" />
     <div class="description">{{ description }}</div>
     <div class="strong">강점</div>
     <div class="strong-content">{{ strong }}</div>
@@ -79,6 +79,7 @@ export default {
   color: #0371e8;
 }
 .tag {
+  margin: 6.75rem 0 0 0;
   font-weight: 500;
   font-size: 0.938rem;
 }
@@ -86,22 +87,37 @@ export default {
   font-weight: 800;
   font-size: 1.875rem;
 }
+.img {
+  margin: 1.867rem 0 2.688rem 0;
+  width: 13.313rem;
+}
 .description {
   white-space: pre-line;
   font-weight: 600;
   font-size: 0.813rem;
+  line-height: 1.54;
+  letter-spacing: -0.26px;
+  margin: 0 0 2.313rem 0;
 }
 .strong {
   background-color: #0371e8;
   color: white;
   width: 3.813rem;
+  height: 1.563rem;
   border-radius: 13px;
   font-size: 0.938rem;
   font-weight: bold;
+  line-height: 1.47;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 .strong-content {
   white-space: pre-line;
   font-size: 0.75rem;
+  margin: 0.813rem 0 1.563rem 0;
+  line-height: 1.83;
+  letter-spacing: -0.16px;
 }
 .weak {
   background-color: #0371e8;
@@ -110,15 +126,23 @@ export default {
   border-radius: 13px;
   font-size: 0.938rem;
   font-weight: bold;
+  height: 1.563rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 .weak-content {
   white-space: pre-line;
   font-size: 0.75rem;
+  line-height: 1.83;
+  letter-spacing: -0.16px;
+  margin: 0.813rem 0 2.375rem 0;
 }
 .copy {
   white-space: pre-line;
   font-weight: bold;
   font-size: 0.938rem;
+  margin: 0 0 2.063rem 0;
 }
 .btn-container {
   display: flex;
@@ -126,27 +150,28 @@ export default {
   width: 8.25rem;
   color: white;
   justify-content: space-between;
-  height: 9rem;
+  height: 8.5rem;
+  margin: 0 0 4.875rem 0;
 }
 .buy {
   background-color: #0371e8;
   font-size: 0.813rem;
   font-weight: 300;
-  padding: 0.65rem 0;
+  height: 2.313rem;
   border-radius: 10px;
 }
 .retry {
   background-color: #afceff;
   font-size: 0.813rem;
   font-weight: 300;
-  padding: 0.65rem 0;
+  height: 2.313rem;
   border-radius: 10px;
 }
 .share {
   background-color: #afceff;
   font-size: 0.813rem;
   font-weight: 300;
-  padding: 0.65rem 0;
   border-radius: 10px;
+  height: 2.313rem;
 }
 </style>
