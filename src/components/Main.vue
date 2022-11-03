@@ -3,14 +3,13 @@
     <div
       class="title text-[1.688rem] leading-[1.19] tracking-[-0.68px] text-black font-bold"
     >
-      나는 어떨 때<br />꾸벅꾸벅 졸까..?
+      나는 어떤 유형의<br />수업을 들을까?
     </div>
-    <img class="img w-[38.8%]" src="../assets/logo.svg" />
-    <div class="sub font-thin text-xs">흠냐흠냐...잠이온다..</div>
+    <img class="img w-[56.4%]" src="../assets/logo.svg" />
     <router-link
-      class="btn text-white text-[0.813rem] font-bold rounded-md bg-custom-blue py-4 w-[44.6%]"
+      class="btn text-white text-[0.813rem] font-bold rounded-md bg-custom-blue py-[0.8rem] w-[39.5%] h-[4.7%]"
       to="/questions"
-      >내 지루함 알아보기</router-link
+      >내 유형 알아보기</router-link
     >
   </div>
 </template>
@@ -25,13 +24,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .title {
-  margin: 0rem 0 1.934rem 0;
+  margin: 0rem 0 2.398rem 0;
 }
 .img {
-  margin: 0 0 0.658rem 0;
-}
-.sub {
-  margin: 0 0 2.313rem 0;
+  margin: 0 0 0.688rem 0;
 }
 .btn {
   margin: 0;
