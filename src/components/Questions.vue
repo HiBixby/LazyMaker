@@ -3,9 +3,9 @@
     <div class="nav">
       <!-- progress bar -->
       <div class="progress-bar py-10 flex-none">
-        <div class="w-full bg-[#f3f3f3] rounded-full h-3.5">
+        <div class="background-bar w-full bg-[#f3f3f3] rounded-full h-3.5">
           <div
-            class="bg-[#83b3ff] h-3.5 rounded-full transition-all"
+            class="blue-bar rounded bg-[#83b3ff] h-3.5 transition-all"
             :style="{ width: (page / (questions.length / 4 - 1)) * 100 + '%' }"
           ></div>
         </div>
@@ -13,59 +13,7 @@
       <!-- prev button -->
       <div class="text-left flex-none">
         <button @click="ShowPrevPage()" class="btn-prev" v-if="page">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="11.28"
-            height="19.817"
-            viewBox="0 0 11.28 19.817"
-          >
-            <g
-              id="그룹_4590"
-              data-name="그룹 4590"
-              transform="translate(-564.926 -2315)"
-            >
-              <path
-                id="선_7"
-                data-name="선 7"
-                d="M-.638,8.77a.361.361,0,0,1-.251-.1A.362.362,0,0,1-.9,8.158L7.786-.889A.362.362,0,0,1,8.3-.9a.362.362,0,0,1,.01.512L-.377,8.659A.361.361,0,0,1-.638,8.77Z"
-                transform="translate(566.862 2316.862)"
-                fill="#787878"
-                stroke="#787878"
-                stroke-linecap="round"
-                stroke-width="1"
-              />
-              <path
-                id="선_7_-_윤곽선"
-                data-name="선 7 - 윤곽선"
-                d="M-1.276,8.494a.72.72,0,0,1-.5-.2A.725.725,0,0,1-1.8,7.269L6.887-1.777A.727.727,0,0,1,7.409-2a.72.72,0,0,1,.5.2A.725.725,0,0,1,7.931-.775L-.754,8.272A.727.727,0,0,1-1.276,8.494Zm8.685-9.77L-1.276,7.77h0Z"
-                transform="translate(567.5 2317.5)"
-                fill="#787878"
-                stroke="#787878"
-                stroke-linecap="round"
-                stroke-width="1"
-              />
-              <path
-                id="선_8"
-                data-name="선 8"
-                d="M8.047,8.047a.361.361,0,0,1-.25-.1L-.889-.377A.362.362,0,0,1-.9-.889.362.362,0,0,1-.388-.9L8.3,7.423a.362.362,0,0,1-.25.623Z"
-                transform="translate(566.862 2325.908)"
-                fill="#787878"
-                stroke="#787878"
-                stroke-linecap="round"
-                stroke-width="1"
-              />
-              <path
-                id="선_8_-_윤곽선"
-                data-name="선 8 - 윤곽선"
-                d="M7.409,7.77a.72.72,0,0,1-.5-.2L-1.776-.754A.725.725,0,0,1-1.8-1.777.727.727,0,0,1-1.276-2a.72.72,0,0,1,.5.2L7.91,6.524a.724.724,0,0,1-.5,1.246ZM-1.276-1.276,7.409,7.047h0Z"
-                transform="translate(567.5 2326.547)"
-                fill="#787878"
-                stroke="#787878"
-                stroke-linecap="round"
-                stroke-width="1"
-              />
-            </g>
-          </svg>
+          <img src="../assets/btn-prev.svg" />
         </button>
         <p class="indicator">
           <span class="text-custom-blue font-bold">{{ page + 1 }}</span
@@ -79,7 +27,7 @@
         v-bind:id="'question__' + (i + page * 4)"
         class="q"
         v-for="i in 4"
-        :key="selected[i + page * 4]+page"
+        :key="GenerateKey(i)"
       >
         <div class="question__number" v-bind:class="{ done: isChecked(i) }">
           Q{{ i + page * 4 }}
@@ -145,55 +93,67 @@ export default {
     ShowNextPage() {
       if (this.page < 4) {
         //마지막 페이지가 아니면
-        let count = 0;
-        for (let i = 0; i < 4; i++) {
-          if (this.selected[i + this.page * 4 + 1] != undefined) {
-            count++;
-          }
-        }
-        if (count == 4) {
-          this.page += 1;
-          window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
-        } else {
-          alert("선택하지 않은 항목이 있습니다.");
-        }
+        this.page += 1;
+        window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
       } else {
         //마지막 페이지 라면
         let score = [
           {
-            type: "강의에 약한 타입",
+            type: "헤르미온느 유형",
             score: this.selected
               .slice(1, 5)
               .reduce((a, b) => parseInt(a) + parseInt(b)),
           },
           {
-            type: "회의에 약한 타입",
+            type: "균형의 수호자 유형",
             score: this.selected
               .slice(5, 9)
               .reduce((a, b) => parseInt(a) + parseInt(b)),
           },
           {
-            type: "조용함에 약한 타입",
+            type: "극강의 효율 지배자 유형",
             score: this.selected
               .slice(9, 13)
               .reduce((a, b) => parseInt(a) + parseInt(b)),
           },
         ];
-        const type_default_score = this.selected
-          .slice(13, 21)
-          .reduce((a, b) => parseInt(a) + parseInt(b));
+        //예외
+        //13~14
+        for (let i = 13; i < 15; i++) {
+          if (this.selected[i] == 1) {
+            score[0].score++;
+          }
+        }
+        //15~16
+        for (let i = 15; i < 17; i++) {
+          if (this.selected[i] == 1) {
+            score[1].score++;
+          }
+        }
+        //17~18
+        for (let i = 17; i < 19; i++) {
+          if (this.selected[i] == 1) {
+            score[2].score++;
+          }
+        }
+        //19
+        if (this.selected[19] == 1) {
+          score[1].score++;
+          score[2].score++;
+        } else if (this.selected[19] == -1) {
+          score[0].score++;
+        }
+        //20
+        if (this.selected[20] == 1) {
+          score[2].score++;
+        } else if (this.selected[20] == -1) {
+          score[1].score++;
+        }
+
         const sortedScore = score.sort(function (a, b) {
           return b.score - a.score;
         });
-        console.log(sortedScore, type_default_score);
-        if (
-          type_default_score > 4 ||
-          sortedScore[0].score === sortedScore[1].score
-        ) {
-          this.type = "지루함이 충만한 타입";
-        } else {
-          this.type = sortedScore[0].type;
-        }
+        this.type = sortedScore[0].type;
         console.log(this.type);
         this.$router.push("/loader");
       }
@@ -221,6 +181,16 @@ export default {
     },
     isChecked(i) {
       return this.selected[i + this.page * 4] ? true : false;
+    },
+    GenerateKey(i) {
+      const uniqueKey =
+        "Q:" +
+        (i + this.page * 4) +
+        " " +
+        "A:" +
+        this.selected[i + this.page * 4];
+      console.log("uniqkey:", uniqueKey);
+      return uniqueKey;
     },
   },
   data() {
@@ -372,6 +342,9 @@ export default {
   top: 0;
   background-color: white;
   padding: 0 0 1.563rem 0;
+}
+.background-bar{
+  overflow:hidden;
 }
 .btn-prev {
   position: absolute;
