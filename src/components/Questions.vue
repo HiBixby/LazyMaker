@@ -79,18 +79,12 @@
         v-bind:id="'question__' + (i + page * 4)"
         class="q"
         v-for="i in 4"
-        :key="i + page * 4"
+        :key="selected[i + page * 4]"
       >
-        <div
-          class="question__number"
-          v-bind:class="{ done: selected[i + page * 4] != undefined }"
-        >
+        <div class="question__number" v-bind:class="{ done: isChecked(i) }">
           Q{{ i + page * 4 }}
         </div>
-        <div
-          class="question__content"
-          v-bind:class="{ done: selected[i + page * 4] != undefined }"
-        >
+        <div class="question__content" v-bind:class="{ done: isChecked(i) }">
           {{ questions[i + page * 4 - 1].title }}
         </div>
         <!-- option -->
@@ -224,6 +218,9 @@ export default {
         block: "start",
         inline: "start",
       });
+    },
+    isChecked(i) {
+      return this.selected[i + this.page * 4] ? true : false;
     },
   },
   data() {
@@ -402,9 +399,8 @@ export default {
 .done {
   color: #afafaf;
 }
-.options{
-  margin:0.5rem;
-
+.options {
+  margin: 0.5rem;
 }
 fieldset {
   margin: 0 0 3.75rem 0;
@@ -417,7 +413,7 @@ input[type="radio"] {
 }
 label {
   font-size: 0.813rem;
-  height:1.75rem;
+  height: 1.75rem;
   padding: 0 1.375rem;
   border: 1px solid #83b3ff;
   border-radius: 7px;
