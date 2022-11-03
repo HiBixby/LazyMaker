@@ -374,7 +374,7 @@ export default {
   position: sticky;
   top: 0;
   background-color: white;
-  padding: 0 0 1.5rem 0;
+  padding: 0 0 1.563rem 0;
 }
 .btn-prev {
   position: absolute;
@@ -402,18 +402,27 @@ export default {
 .done {
   color: #afafaf;
 }
+.options{
+  margin:0.5rem;
+
+}
 fieldset {
   margin: 0 0 3.75rem 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 input[type="radio"] {
   display: none;
 }
 label {
   font-size: 0.813rem;
-  margin: 0.375rem;
-  padding: 0.438rem 1.375rem;
+  height:1.75rem;
+  padding: 0 1.375rem;
   border: 1px solid #83b3ff;
   border-radius: 7px;
+  display: flex;
+  align-items: center;
 }
 input[type="radio"]:checked + label {
   background: #0371e8;
