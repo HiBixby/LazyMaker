@@ -11,12 +11,7 @@
     <div class="copy">{{ copy }}</div>
     <div class="btn-container">
       <button class="buy" @click="Redirect()">수면카드 사러가기</button>
-      <button
-        class="retry"
-        @click="Retry()"
-      >
-        다시 검사하기
-      </button>
+      <button class="retry" @click="Retry()">다시 검사하기</button>
       <button class="share" @click="ShareLink()">공유하기</button>
     </div>
   </div>
@@ -62,11 +57,12 @@ export default {
       }
     },
     Retry() {
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
       this.$router.push("/questions");
     },
     Redirect() {
-      window.open("https://2022.khvd.kr/");
+      const REDIRECT_URL = "https://2022.khvd.kr/";
+      window.open(REDIRECT_URL);
     },
   },
 };
