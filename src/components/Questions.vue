@@ -79,7 +79,7 @@
         v-bind:id="'question__' + (i + page * 4)"
         class="q"
         v-for="i in 4"
-        :key="selected[i + page * 4]"
+        :key="selected[i + page * 4]+page"
       >
         <div class="question__number" v-bind:class="{ done: isChecked(i) }">
           Q{{ i + page * 4 }}
