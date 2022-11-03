@@ -1,26 +1,8 @@
-# test-mytype-vue
+#Lazy maker
 
-## Project setup
-```
-npm install
-```
+What I used
+* Vue3
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![image](https://user-images.githubusercontent.com/66160055/199714232-a596bd4f-480a-43c9-b58b-82adbef7ef4d.png)
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-https://hibixby.github.io/TestMyType_Vue/dist
+[!mDemo](https://hibixby.github.io/LazyMaker_Vue/dist)
