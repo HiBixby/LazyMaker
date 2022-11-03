@@ -83,13 +83,13 @@
       >
         <div
           class="question__number"
-          v-bind:class="{ done: selected[i + page * 4] }"
+          v-bind:class="{ done: selected[i + page * 4] != undefined }"
         >
           Q{{ i + page * 4 }}
         </div>
         <div
           class="question__content"
-          v-bind:class="{ done: selected[i + page * 4] }"
+          v-bind:class="{ done: selected[i + page * 4] != undefined }"
         >
           {{ questions[i + page * 4 - 1].title }}
         </div>
@@ -101,8 +101,9 @@
               v-bind:id="'yes_' + (i + page * 4)"
               v-bind:name="i + page * 4"
               v-model="selected[i + page * 4]"
-              value="yes"
+              value="1"
               @click="ScrollToNextQuestion"
+              required
             />
             <label v-bind:for="'yes_' + (i + page * 4)">그렇다</label>
             <input
@@ -110,8 +111,9 @@
               v-bind:id="'idk_' + (i + page * 4)"
               v-bind:name="i + page * 4"
               v-model="selected[i + page * 4]"
-              value="idk"
+              value="0"
               @click="ScrollToNextQuestion"
+              required
             />
             <label v-bind:for="'idk_' + (i + page * 4)">잘모르겠다</label>
             <input
@@ -119,8 +121,9 @@
               v-bind:id="'no_' + (i + page * 4)"
               v-bind:name="i + page * 4"
               v-model="selected[i + page * 4]"
-              value="no"
+              value="-1"
               @click="ScrollToNextQuestion"
+              required
             />
             <label v-bind:for="'no_' + (i + page * 4)">아니다</label>
           </fieldset>
@@ -128,7 +131,12 @@
       </div>
     </div>
     <div class="btn-next__container">
-      <button class="btn-next" type="submit" @click="ShowNextPage()">
+      <button 
+        class="btn-next"
+        type="submit"
+        @click="ShowNextPage()"
+        v-bind:class="{ invisible: selected[3] }"
+      >
         {{ btnMsg[page] }}
       </button>
     </div>
@@ -142,13 +150,57 @@ export default {
   methods: {
     ShowNextPage() {
       if (this.page < 4) {
-        this.page += 1;
-        window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
+        //마지막 페이지가 아니면
+        let count = 0;
+        for (let i = 0; i < 4; i++) {
+          if (this.selected[i + this.page * 4 + 1] != undefined) {
+            count++;
+          }
+        }
+        if (count == 4) {
+          this.page += 1;
+          window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
+        } else {
+          alert("선택하지 않은 항목이 있습니다.");
+        }
       } else {
-        this.selected.slice(1, 5);
-        this.selected.slice(5, 9);
-        this.selected.slice(9, 13);
-        this.selected.slice(13, 21);
+        //마지막 페이지 라면
+        let score = [
+          {
+            type: "강의에 약한 타입",
+            score: this.selected
+              .slice(1, 5)
+              .reduce((a, b) => parseInt(a) + parseInt(b)),
+          },
+          {
+            type: "회의에 약한 타입",
+            score: this.selected
+              .slice(5, 9)
+              .reduce((a, b) => parseInt(a) + parseInt(b)),
+          },
+          {
+            type: "조용함에 약한 타입",
+            score: this.selected
+              .slice(9, 13)
+              .reduce((a, b) => parseInt(a) + parseInt(b)),
+          },
+        ];
+        const type_default_score = this.selected
+          .slice(13, 21)
+          .reduce((a, b) => parseInt(a) + parseInt(b));
+        const sortedScore = score.sort(function (a, b) {
+          return b.score - a.score;
+        });
+        console.log(sortedScore, type_default_score);
+        if (
+          type_default_score > 4 ||
+          sortedScore[0].score === sortedScore[1].score
+        ) {
+          this.type = "지루함이 충만한 타입";
+        } else {
+          this.type = sortedScore[0].type;
+        }
+        console.log(this.type);
         this.$router.push("/loader");
       }
     },
@@ -178,6 +230,7 @@ export default {
     return {
       page: 0,
       cur_question: 0,
+      type: undefined,
       questions: [
         {
           id: 1,
@@ -284,7 +337,7 @@ export default {
           answer: 0,
         },
       ],
-      selected: [],
+      selected: new Array(21),
       btnMsg: [
         "다음으로 넘어가기",
         "다음으로 넘어가기",
