@@ -44,9 +44,9 @@ export default {
   name: "LoaderPage",
   props: {},
   created() {
-    // setTimeout(() => {
-    //   this.$router.push("/result");
-    // }, 1000);
+    setTimeout(() => {
+      this.$router.push("/result");
+    }, 1000);
   },
 };
 </script>
