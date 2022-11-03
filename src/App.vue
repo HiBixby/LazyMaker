@@ -11,7 +11,7 @@ export default {
     $route: {
       immediate: true,
       handler(to, from) {
-        document.title = "테스트 : " + to.meta.title || "나의 유형 테스트";
+        document.title = "Lazy maker : " + to.meta.title || "Lazy maker";
       },
     },
   },
