@@ -1,33 +1,20 @@
 <template>
-  <div class="min-h-full p-10 flex flex-col justify-center">
-    <div class="제목">
-      <div class="text-l font-bold">힐링은 나의 몫</div>
-      <div class="text-2xl font-bold">러스틱 라이프를 즐기는 차크닉</div>
-    </div>
-    <div class="flex justify-center">
-      <div class="bg-gray-300 w-36 h-36">이미지</div>
-    </div>
-    <div>
-      힐링을 위해서 차크닉을 하며 도심으로부터 벗어나 힐링을 위해서 숲을 찾아서
-      차크닉을 즐겨요!
-    </div>
-    <div class="animate-pulse my-5">
-      <div class="flex-1 space-y-6 py-1">
-        <div class="h-2 bg-slate-200 rounded"></div>
-        <div class="space-y-3">
-          <div class="grid grid-cols-3 gap-4">
-            <div class="h-2 bg-slate-200 rounded col-span-2"></div>
-            <div class="h-2 bg-slate-200 rounded col-span-1"></div>
-          </div>
-          <div class="h-2 bg-slate-200 rounded"></div>
-        </div>
-      </div>
-    </div>
-    <div @click="[Retry()]" class="bg-gray-300 rounded-md py-3 my-3">
-      <i class="fa-solid fa-rotate-left"></i> 다시하기
-    </div>
-    <div @click="[ShareLink()]" class="bg-gray-300 rounded-md py-3 my-3">
-      <i class="fa-solid fa-arrow-up-from-bracket"></i> 공유하기
+  <div class="result">
+    <p class="tag">#누구보다 열심히, 열정적으로</p>
+    <p class="type">헤르미온느 유형</p>
+    <img src="../assets/result-A.svg" />
+    <div class="description">{{ description }}</div>
+    <div class="strong">강점</div>
+    <div class="strong-content">{{ strong }}</div>
+    <div class="weak">약점</div>
+    <div class="weak-content">{{ weak }}</div>
+    <div class="copy">{{ copy }}</div>
+    <div class="btn-container">
+      <button class="buy" @click="Redirect()">수면카드 사러가기</button>
+      <button class="retry" @click="$router.push('questions')">
+        다시 검사하기
+      </button>
+      <button class="share" @click="ShareLink()">공유하기</button>
     </div>
   </div>
 </template>
@@ -35,6 +22,16 @@
 <script>
 export default {
   name: "ResultPage",
+  data() {
+    return {
+      description:
+        "당신은 주로 교수님과의 면대면 강의를 선호해요!\n순간적인 집중력이 강하며, 대화의 흐름을 잘 놓치지 않아요.\n다른사람의 말을 경청하며 공감능력도 좋은 편이에요.\n하지만 지속적인 집중을 요하기때문에 쉽게 지칠 수 있어요.",
+      strong:
+        "1.  공부한만큼,성적이 나와요 그래서 이 수업만큼은 놓치고 싶지가 않아요\n2. 시험 문제예측이 비교적으로 쉬워요\n3. 필기후 뿌듯해진 내 자신을 발견할 수 있어요.",
+      weak: "1. 필기나 강의내용을 놓치게 되면 곤란해져요\n2.높은 집중력과 암기력을 요해요\n3. 굉장한 수업참여도를 요하기 때문에 긴장의 끈을 놓을 수 없어요",
+      copy: "긴장의 끊을 놓을 수 없는 당신을 위해서\n“수면여행” 수면 카드를 추천해요!",
+    };
+  },
   props: {
     msg: String,
   },
@@ -62,11 +59,94 @@ export default {
       }
     },
     Retry() {
-      this.$router.push("/main");
+      this.$router.push("/questions");
+    },
+    Redirect() {
+      window.open("https://2022.khvd.kr/");
     },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+.result {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #0371e8;
+}
+.tag {
+  font-weight: 500;
+  font-size: 0.938rem;
+}
+.type {
+  font-weight: 800;
+  font-size: 1.875rem;
+}
+.description {
+  white-space: pre-line;
+  font-weight: 600;
+  font-size: 0.813rem;
+}
+.strong {
+  background-color: #0371e8;
+  color: white;
+  width: 3.813rem;
+  border-radius: 13px;
+  font-size: 0.938rem;
+  font-weight: bold;
+}
+.strong-content {
+  white-space: pre-line;
+  font-size: 0.75rem;
+}
+.weak {
+  background-color: #0371e8;
+  color: white;
+  width: 3.813rem;
+  border-radius: 13px;
+  font-size: 0.938rem;
+  font-weight: bold;
+}
+.weak-content {
+  white-space: pre-line;
+  font-size: 0.75rem;
+}
+.copy {
+  white-space: pre-line;
+  font-weight: bold;
+  font-size: 0.938rem;
+}
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  width: 8.25rem;
+  color: white;
+  justify-content: space-between;
+  height: 9rem;
+}
+.buy {
+  background-color: #0371e8;
+  font-size: 0.813rem;
+  font-weight: 300;
+  padding: 0.65rem 0;
+  border-radius: 10px;
+}
+.retry {
+  background-color: #afceff;
+  font-size: 0.813rem;
+  font-weight: 300;
+  padding: 0.65rem 0;
+  border-radius: 10px;
+}
+.share {
+  background-color: #afceff;
+  font-size: 0.813rem;
+  font-weight: 300;
+  padding: 0.65rem 0;
+  border-radius: 10px;
+}
+</style>
