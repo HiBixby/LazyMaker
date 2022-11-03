@@ -11,7 +11,10 @@
     <div class="copy">{{ copy }}</div>
     <div class="btn-container">
       <button class="buy" @click="Redirect()">수면카드 사러가기</button>
-      <button class="retry" @click="$router.push('questions')">
+      <button
+        class="retry"
+        @click="Retry()"
+      >
         다시 검사하기
       </button>
       <button class="share" @click="ShareLink()">공유하기</button>
@@ -59,6 +62,7 @@ export default {
       }
     },
     Retry() {
+      window.scrollTo(0,0);
       this.$router.push("/questions");
     },
     Redirect() {
@@ -108,7 +112,7 @@ export default {
   font-size: 0.938rem;
   font-weight: bold;
   line-height: 1.47;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -127,7 +131,7 @@ export default {
   font-size: 0.938rem;
   font-weight: bold;
   height: 1.563rem;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
