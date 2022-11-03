@@ -131,11 +131,11 @@
       </div>
     </div>
     <div class="btn-next__container">
-      <button 
+      <button
         class="btn-next"
         type="submit"
         @click="ShowNextPage()"
-        v-bind:class="{ invisible: selected[3] }"
+        v-bind:class="{ invisible: !isAllChecked }"
       >
         {{ btnMsg[page] }}
       </button>
@@ -234,7 +234,7 @@ export default {
       questions: [
         {
           id: 1,
-          title: "지루해서 하품을 자연스럽게 한 경험이 있다.",
+          title: "나는 필기를 해야 맘이 좀 놓인다.",
           answer: 0,
         },
         {
@@ -245,95 +245,96 @@ export default {
         {
           id: 3,
           title:
-            "현재 중,고등학교 수업시간보다 강의시간에\n많이 졸았던 경험이 있다.",
+            "현재 중,고등학교 수업시간보다 대학 강의시간에\n더 집중하게된다.",
           answer: 0,
         },
         {
           id: 4,
-          title: "교수님의 목소리가 자장가처럼 나긋나긋하게 들린다.",
+          title: "교수님의 목소리를 멀리서 들어도 잘들린다.",
           answer: 0,
         },
         {
           id: 5,
-          title: "인강을 듣다가 졸린적이 있다.",
+          title: "조별과제를 하면서 스트레스 받은적이 없다.",
           answer: 0,
         },
         {
           id: 6,
-          title: "회의시간에 졸다가 나도 모르게 잠든 적이 있다.",
+          title: "나는 경쟁을 즐긴다.",
           answer: 0,
         },
         {
           id: 7,
           title:
-            '회의를 할때, 메모를 잘 적었다고 생각했지만\n"휴먼졸림체" 로 적힌 경험이 있다.',
+            "회의를 하다보면 다른사람의 의견이 종종\n재미있고 유익할때가 있다.",
           answer: 0,
         },
         {
           id: 8,
-          title: "회의 중, 졸다가 대답한적이 있다.",
+          title: "조별과제를 하고나면 너무 뿌듯하다.",
           answer: 0,
         },
         {
           id: 9,
-          title: "회의내용보다 메모지에 그린 낙서가 더 재미있다.",
+          title: "학교가는게 세상에서 제일 귀찮다.",
           answer: 0,
         },
         {
           id: 10,
-          title: "나는 주로 조용하면 편안해진다.",
+          title: "비대면 수업일때가 좋았다 생각한적 있다.",
           answer: 0,
         },
         {
           id: 11,
           title:
-            "잠을 잘 잤어도 내가 흥미로운 일이 아니라면,\n쉽게 지루함을 느끼고는 한다.",
+            "친구들과 함께 수업을 몰려서 듣는거 보다도,\n혼자서 조용히 듣는게 더 좋다.",
           answer: 0,
         },
         {
           id: 12,
-          title: "조용한곳에서 쉽게 피로해진다.",
+          title: "강의내용을 한번에 이해하기 힘들다.",
           answer: 0,
         },
         {
           id: 13,
-          title: "음식을 먹다가 졸아서 잔적이 있다.",
+          title: "다른 친구의 필기를 빌려본적이 있다.",
           answer: 0,
         },
         {
           id: 14,
-          title: "나는 뜬 눈으로 자주 새벽을 지새고는 한다.",
+          title: "레포트 재출보다는 시험이 좋다.",
           answer: 0,
         },
         {
           id: 15,
           title:
-            "나는 침대에 누웠을때, 우울감과 후회가 되었던\n일들이 생각나 잠을 설치곤 한다.",
+            "조별과제를 통해서 배운점들 보다, 사람에 대한\n안좋은 기억이 더 많다.",
           answer: 0,
         },
         {
           id: 16,
-          title: "핸드폰을 손에 쥔 채 잠든적이 있다.",
+          title: "팀이 꾸려지면 종종 팀장을 자처하곤 한다.",
           answer: 0,
         },
         {
           id: 17,
-          title: "나는 남들보다 쉽게 지루해진다.",
+          title: "온라인으로 청강할시 더 집중이 잘된다.",
           answer: 0,
         },
         {
           id: 18,
-          title: "조용한것보다 유치한것 들에 쉽게 지루해진다.",
+          title: "온라인일때 더 활발하게 질문하곤 한다.",
           answer: 0,
         },
         {
           id: 19,
-          title: "피곤한것 보다 지루할때 더 잠이 잘온다.",
+          title:
+            "강의를 고를때 주로 강의평을 굉장히 유심히\n생각한뒤 고르게된다.",
           answer: 0,
         },
         {
           id: 20,
-          title: "조수석에 탑승하면 나도 모르게 잠에든다.",
+          title: "강의를 주로 혼자듣는다.",
           answer: 0,
         },
       ],
@@ -346,6 +347,17 @@ export default {
         "결과 확인하기",
       ],
     };
+  },
+  computed: {
+    isAllChecked: function () {
+      let cnt = 0;
+      for (let i = 1; i <= 4; i++) {
+        if (this.selected[i + this.page * 4]) {
+          cnt++;
+        }
+      }
+      return cnt === 4 ? true : false;
+    },
   },
 };
 </script>
