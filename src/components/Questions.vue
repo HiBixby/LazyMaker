@@ -79,7 +79,7 @@
         v-bind:id="'question__' + (i + page * 4)"
         class="q"
         v-for="i in 4"
-        :key="selected[i + page * 4]+page"
+        :key="GenerateKey(i)"
       >
         <div class="question__number" v-bind:class="{ done: isChecked(i) }">
           Q{{ i + page * 4 }}
@@ -221,6 +221,12 @@ export default {
     },
     isChecked(i) {
       return this.selected[i + this.page * 4] ? true : false;
+    },
+    GenerateKey(i) {
+      const uniqueKey =
+        "Q:"+(i + this.page * 4) + " "+"A:"+this.selected[i + this.page * 4];
+      console.log("uniqkey:", uniqueKey);
+      return uniqueKey;
     },
   },
   data() {
