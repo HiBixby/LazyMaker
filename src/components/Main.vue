@@ -5,7 +5,7 @@
     >
       나는 어떤 유형의<br />수업을 들을까?
     </div>
-    <img class="img w-[56.4%]" src="../assets/logo.svg" />
+    <img class="img h-[22.2%]" src="../assets/logo.svg" />
     <router-link
       class="btn text-white text-[0.813rem] font-bold rounded-md bg-custom-blue py-[0.8rem] w-[39.5%] h-[4.7%]"
       to="/questions"
