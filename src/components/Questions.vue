@@ -3,9 +3,9 @@
     <div class="nav">
       <!-- progress bar -->
       <div class="progress-bar py-10 flex-none">
-        <div class="w-full bg-[#f3f3f3] rounded-full h-3.5">
+        <div class="background-bar w-full bg-[#f3f3f3] rounded-full h-3.5">
           <div
-            class="bg-[#83b3ff] h-3.5 rounded-full transition-all"
+            class="blue-bar rounded bg-[#83b3ff] h-3.5 transition-all"
             :style="{ width: (page / (questions.length / 4 - 1)) * 100 + '%' }"
           ></div>
         </div>
@@ -93,55 +93,67 @@ export default {
     ShowNextPage() {
       if (this.page < 4) {
         //마지막 페이지가 아니면
-        let count = 0;
-        for (let i = 0; i < 4; i++) {
-          if (this.selected[i + this.page * 4 + 1] != undefined) {
-            count++;
-          }
-        }
-        if (count == 4) {
-          this.page += 1;
-          window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
-        } else {
-          alert("선택하지 않은 항목이 있습니다.");
-        }
+        this.page += 1;
+        window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
       } else {
         //마지막 페이지 라면
         let score = [
           {
-            type: "강의에 약한 타입",
+            type: "헤르미온느 유형",
             score: this.selected
               .slice(1, 5)
               .reduce((a, b) => parseInt(a) + parseInt(b)),
           },
           {
-            type: "회의에 약한 타입",
+            type: "균형의 수호자 유형",
             score: this.selected
               .slice(5, 9)
               .reduce((a, b) => parseInt(a) + parseInt(b)),
           },
           {
-            type: "조용함에 약한 타입",
+            type: "극강의 효율 지배자 유형",
             score: this.selected
               .slice(9, 13)
               .reduce((a, b) => parseInt(a) + parseInt(b)),
           },
         ];
-        const type_default_score = this.selected
-          .slice(13, 21)
-          .reduce((a, b) => parseInt(a) + parseInt(b));
+        //예외
+        //13~14
+        for (let i = 13; i < 15; i++) {
+          if (this.selected[i] == 1) {
+            score[0].score++;
+          }
+        }
+        //15~16
+        for (let i = 15; i < 17; i++) {
+          if (this.selected[i] == 1) {
+            score[1].score++;
+          }
+        }
+        //17~18
+        for (let i = 17; i < 19; i++) {
+          if (this.selected[i] == 1) {
+            score[2].score++;
+          }
+        }
+        //19
+        if (this.selected[19] == 1) {
+          score[1].score++;
+          score[2].score++;
+        } else if (this.selected[19] == -1) {
+          score[0].score++;
+        }
+        //20
+        if (this.selected[20] == 1) {
+          score[2].score++;
+        } else if (this.selected[20] == -1) {
+          score[1].score++;
+        }
+
         const sortedScore = score.sort(function (a, b) {
           return b.score - a.score;
         });
-        console.log(sortedScore, type_default_score);
-        if (
-          type_default_score > 4 ||
-          sortedScore[0].score === sortedScore[1].score
-        ) {
-          this.type = "지루함이 충만한 타입";
-        } else {
-          this.type = sortedScore[0].type;
-        }
+        this.type = sortedScore[0].type;
         console.log(this.type);
         this.$router.push("/loader");
       }
@@ -330,6 +342,9 @@ export default {
   top: 0;
   background-color: white;
   padding: 0 0 1.563rem 0;
+}
+.background-bar{
+  overflow:hidden;
 }
 .btn-prev {
   position: absolute;
