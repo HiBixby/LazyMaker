@@ -2,7 +2,7 @@
   <div class="result">
     <p class="tag">#누구보다 열심히, 열정적으로</p>
     <p class="type">헤르미온느 유형</p>
-    <img class="img" src="../assets/result-A.svg" />
+    <img class="img" src="../assets/Type_A.svg" />
     <div class="description">{{ description }}</div>
     <div class="strong">강점</div>
     <div class="strong-content">{{ strong }}</div>
@@ -88,7 +88,7 @@ export default {
   font-size: 1.875rem;
 }
 .img {
-  margin: 1.867rem 0 2.688rem 0;
+  margin: 0.975rem 0 0.812rem 0;
   width: 13.313rem;
 }
 .description {
