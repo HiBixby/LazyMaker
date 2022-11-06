@@ -89,7 +89,7 @@ export default {
 }
 .img {
   margin: 0.975rem 0 0.812rem 0;
-  width: 13.313rem;
+  width: 12.256rem;
 }
 .description {
   white-space: pre-line;
