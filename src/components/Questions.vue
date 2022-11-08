@@ -273,7 +273,7 @@ export default {
         },
         {
           id: 14,
-          title: "레포트 재출보다는 시험이 좋다.",
+          title: "레포트 제출보다는 시험이 좋다.",
           answer: 0,
         },
         {
