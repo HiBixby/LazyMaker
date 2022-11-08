@@ -90,6 +90,66 @@ export default {
   name: "QuestionsPage",
   props: {},
   methods: {
+    CalculateType() {
+      let score = [
+        {
+          type: "헤르미온느 유형",
+          score: this.selected
+            .slice(1, 5)
+            .reduce((a, b) => parseInt(a) + parseInt(b)),
+        },
+        {
+          type: "균형의 수호자 유형",
+          score: this.selected
+            .slice(5, 9)
+            .reduce((a, b) => parseInt(a) + parseInt(b)),
+        },
+        {
+          type: "극강의 효율 지배자 유형",
+          score: this.selected
+            .slice(9, 13)
+            .reduce((a, b) => parseInt(a) + parseInt(b)),
+        },
+      ];
+      //예외
+      //13~14
+      for (let i = 13; i < 15; i++) {
+        if (this.selected[i] == 1) {
+          score[0].score++;
+        }
+      }
+      //15~16
+      for (let i = 15; i < 17; i++) {
+        if (this.selected[i] == 1) {
+          score[1].score++;
+        }
+      }
+      //17~18
+      for (let i = 17; i < 19; i++) {
+        if (this.selected[i] == 1) {
+          score[2].score++;
+        }
+      }
+      //19
+      if (this.selected[19] == 1) {
+        score[1].score++;
+        score[2].score++;
+      } else if (this.selected[19] == -1) {
+        score[0].score++;
+      }
+      //20
+      if (this.selected[20] == 1) {
+        score[2].score++;
+      } else if (this.selected[20] == -1) {
+        score[1].score++;
+      }
+
+      const sortedScore = score.sort(function (a, b) {
+        return b.score - a.score;
+      });
+      this.type = sortedScore[0].type;
+      return this.type;
+    },
     ShowNextPage() {
       if (this.page < 4) {
         //마지막 페이지가 아니면
@@ -97,65 +157,9 @@ export default {
         window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
       } else {
         //마지막 페이지 라면
-        let score = [
-          {
-            type: "헤르미온느 유형",
-            score: this.selected
-              .slice(1, 5)
-              .reduce((a, b) => parseInt(a) + parseInt(b)),
-          },
-          {
-            type: "균형의 수호자 유형",
-            score: this.selected
-              .slice(5, 9)
-              .reduce((a, b) => parseInt(a) + parseInt(b)),
-          },
-          {
-            type: "극강의 효율 지배자 유형",
-            score: this.selected
-              .slice(9, 13)
-              .reduce((a, b) => parseInt(a) + parseInt(b)),
-          },
-        ];
-        //예외
-        //13~14
-        for (let i = 13; i < 15; i++) {
-          if (this.selected[i] == 1) {
-            score[0].score++;
-          }
-        }
-        //15~16
-        for (let i = 15; i < 17; i++) {
-          if (this.selected[i] == 1) {
-            score[1].score++;
-          }
-        }
-        //17~18
-        for (let i = 17; i < 19; i++) {
-          if (this.selected[i] == 1) {
-            score[2].score++;
-          }
-        }
-        //19
-        if (this.selected[19] == 1) {
-          score[1].score++;
-          score[2].score++;
-        } else if (this.selected[19] == -1) {
-          score[0].score++;
-        }
-        //20
-        if (this.selected[20] == 1) {
-          score[2].score++;
-        } else if (this.selected[20] == -1) {
-          score[1].score++;
-        }
-
-        const sortedScore = score.sort(function (a, b) {
-          return b.score - a.score;
-        });
-        this.type = sortedScore[0].type;
+        this.CalculateType();
         console.log(this.type);
-        this.$router.push("/loader");
+        this.$router.push({ name: "로딩", query: { mytype: this.type } });
       }
     },
     ShowPrevPage() {
@@ -343,8 +347,8 @@ export default {
   background-color: white;
   padding: 0 0 1.563rem 0;
 }
-.background-bar{
-  overflow:hidden;
+.background-bar {
+  overflow: hidden;
 }
 .btn-prev {
   position: absolute;
