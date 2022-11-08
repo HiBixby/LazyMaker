@@ -44,8 +44,12 @@ export default {
   name: "LoaderPage",
   props: {},
   created() {
+    console.log(this.$route.query.mytype);
     setTimeout(() => {
-      this.$router.push("/result");
+      this.$router.push({
+        name: "결과",
+        params: { mytype: this.$route.query.mytype },
+      });
     }, 1000);
   },
 };
