@@ -171,17 +171,21 @@ export default {
       }
     },
     ScrollToNextQuestion(event) {
-      console.log("clicked");
       let event_id = event.currentTarget.id;
       let event_question_number = parseInt(event_id.split("_")[1]);
-      let next_id = "question__" + event_question_number;
-      console.log(event_id, event_question_number, next_id);
-      console.log(document.getElementById(next_id));
-      document.getElementById(next_id).scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "start",
-      });
+      //radio 토글 체크 해제 (똑같은 답 누르면 체크 해제)
+      if (this.selected[event_question_number] == event.currentTarget.value) {
+        this.selected[event_question_number] = undefined;
+      } else {
+        let next_id = "question__" + event_question_number;
+        console.log(event_id, event_question_number, next_id);
+        console.log(document.getElementById(next_id));
+        document.getElementById(next_id).scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "start",
+        });
+      }
     },
     isChecked(i) {
       return this.selected[i + this.page * 4] ? true : false;
