@@ -66,8 +66,8 @@ export default {
     ShareLink() {
       if (navigator.share) {
         navigator.share({
-          title: "나의 유형 테스트", // 공유될 제목
-          text: "설명", // 공유될 설명
+          title: "나는 어떤 유형의 수업을 들을까?", // 공유될 제목
+          text: this.mytype, // 공유될 설명
           url: window.document.location.href, // 공유될 URL
           files: [], // 공유할 파일 배열
         });
