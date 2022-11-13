@@ -44,7 +44,7 @@
               v-bind:name="i + page * 4"
               v-model="selected[i + page * 4]"
               value="1"
-              @click="ScrollToNextQuestion"
+              @click="HandleAnswerClick"
               required
             />
             <label v-bind:for="'yes_' + (i + page * 4)">그렇다</label>
@@ -54,7 +54,7 @@
               v-bind:name="i + page * 4"
               v-model="selected[i + page * 4]"
               value="0"
-              @click="ScrollToNextQuestion"
+              @click="HandleAnswerClick"
               required
             />
             <label v-bind:for="'idk_' + (i + page * 4)">잘모르겠다</label>
@@ -64,7 +64,7 @@
               v-bind:name="i + page * 4"
               v-model="selected[i + page * 4]"
               value="-1"
-              @click="ScrollToNextQuestion"
+              @click="HandleAnswerClick"
               required
             />
             <label v-bind:for="'no_' + (i + page * 4)">아니다</label>
@@ -170,22 +170,23 @@ export default {
         history.back();
       }
     },
-    ScrollToNextQuestion(event) {
-      let event_id = event.currentTarget.id;
-      let event_question_number = parseInt(event_id.split("_")[1]);
-      //radio 토글 체크 해제 (똑같은 답 누르면 체크 해제)
-      if (this.selected[event_question_number] == event.currentTarget.value) {
-        this.selected[event_question_number] = undefined;
+    HandleAnswerClick(event) {
+      const questionNumber = parseInt(event.currentTarget.id.split("_")[1]);
+      const answer = event.currentTarget.value;
+      if (this.selected[questionNumber] == answer) {
+        this.selected[questionNumber] = undefined;
       } else {
-        let next_id = "question__" + event_question_number;
-        console.log(event_id, event_question_number, next_id);
-        console.log(document.getElementById(next_id));
-        document.getElementById(next_id).scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "start",
-        });
+        this.ScrollToNextQuestion(questionNumber);
       }
+    },
+    ScrollToNextQuestion(questionNumber) {
+      let questionId = "question__" + questionNumber;
+      console.log(document.getElementById(questionId));
+      document.getElementById(questionId).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "start",
+      });
     },
     isChecked(i) {
       return this.selected[i + this.page * 4] ? true : false;
