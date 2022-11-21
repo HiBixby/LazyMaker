@@ -1,7 +1,7 @@
 <template>
   <div class="result">
     <p class="tag">{{ content[mytype].hashtag }}</p>
-    <p class="type">{{ mytype }}</p>
+    <p class="type">{{ content[mytype].name }}</p>
     <img class="img" v-bind:src="content[mytype].img" />
     <div class="description">{{ content[mytype].description }}</div>
     <div class="strong">강점</div>
@@ -29,7 +29,8 @@ export default {
   data() {
     return {
       content: {
-        "헤르미온느 유형": {
+        A: {
+          name: "헤르미온느 유형",
           hashtag: "#누구보다 열심히, 열정적으로",
           img: require("../assets/Type_A.svg"),
           description:
@@ -39,7 +40,8 @@ export default {
           weak: "1. 필기나 강의내용을 놓치게 되면 곤란해져요\n2.높은 집중력과 암기력을 요해요\n3. 굉장한 수업참여도를 요하기 때문에 긴장의 끈을 놓을 수 없어요",
           copy: "긴장의 끊을 놓을 수 없는 당신을 위해서\n“수면여행” 수면 카드를 추천해요!",
         },
-        "균형의 수호자 유형": {
+        B: {
+          name: "균형의 수호자 유형",
           hashtag: "#협동은 나의 몫",
           img: require("../assets/Type_B.svg"),
           description:
@@ -49,7 +51,8 @@ export default {
           weak: "1. 사람들로 인한 스트레스 지수가 높아질 수 있어요.\n2. 간혹, 팀플의 과제 전체를 떠앉아요.\n3. 많이 바쁜 한학기가 될 수 있어요.",
           copy: "사람들로 부터 스트레스 받는 당신을 위해서\n“나홀로 수면” 수면 카드를 추천해요!",
         },
-        "극강의 효율 지배자 유형": {
+        C: {
+          name: "극강의 효율 지배자 유형",
           hashtag: "#시간과 공간의 효율지배자",
           img: require("../assets/Type_C.svg"),
           description:

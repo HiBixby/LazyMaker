@@ -93,19 +93,19 @@ export default {
     CalculateType() {
       let score = [
         {
-          type: "헤르미온느 유형",
+          type: "A",
           score: this.selected
             .slice(1, 5)
             .reduce((a, b) => parseInt(a) + parseInt(b)),
         },
         {
-          type: "균형의 수호자 유형",
+          type: "B",
           score: this.selected
             .slice(5, 9)
             .reduce((a, b) => parseInt(a) + parseInt(b)),
         },
         {
-          type: "극강의 효율 지배자 유형",
+          type: "C",
           score: this.selected
             .slice(9, 13)
             .reduce((a, b) => parseInt(a) + parseInt(b)),
