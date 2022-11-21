@@ -1,13 +1,24 @@
 <template>
+  <metainfo></metainfo>
   <router-view></router-view>
 </template>
 
 <script>
+import { useMeta } from 'vue-meta';
+
 /* eslint-disable */
 export default {
   name: "App",
   components: {},
-
+  setup(){
+    useMeta({
+      title:"Lazy maker",
+      meta:[
+        {vmid:'og:title',name:'og.title',content:'Lazy maker'}
+      ]
+    })
+    
+  }
 };
 </script>
 
