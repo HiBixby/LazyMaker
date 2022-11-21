@@ -18,6 +18,17 @@
 export default {
   name: "MainPage",
   props: {},
+  metaInfo() {
+    return {
+      title: "Lazy maker",
+      titleTemplate:'%s - 메인',
+      link: [{ rel: "canonical", href: "lazymaker.kro.kr" }],
+      meta: [
+        { charset: "utf8" },
+        { vmid: "main", name: "Lazymaker", content: "나는 어떤 유형의 수업을 들을까?" },
+      ],
+    };
+  },
 };
 </script>
 

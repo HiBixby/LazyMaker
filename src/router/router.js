@@ -51,11 +51,5 @@ const router = createRouter({
   routes,
 });
 
-router.afterEach((to, from) => {
-  const title = to.meta.title === undefined ? "DDaJa" : to.meta.title;
-  Vue.nextTick(() => {
-    document.title = title;
-  });
-});
 
 export default router;

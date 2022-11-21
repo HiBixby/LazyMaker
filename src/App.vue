@@ -7,14 +7,7 @@
 export default {
   name: "App",
   components: {},
-  watch: {
-    $route: {
-      immediate: true,
-      handler(to, from) {
-        document.title = "Lazy maker : " + to.meta.title || "Lazy maker";
-      },
-    },
-  },
+
 };
 </script>
 
