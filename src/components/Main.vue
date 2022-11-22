@@ -15,18 +15,24 @@
 </template>
 
 <script>
-import { useMeta } from "vue-meta";
 export default {
   name: "MainPage",
   props: {},
-  setup() {
-    useMeta({
-      title: "Lazy maker - 메인",
-      og: {
-        title: "Lazy maker",
-        description: "나는 어떤 유형의 수업을 들을까?",
-      },
-    });
+  metaInfo() {
+    return {
+      title: "Lazy maker - 내 유형 알아보기",
+      description: "나는 어떤 유형의 수업을 들을까?",
+      meta: [
+        { name: "og:title", content: "내 유형 알아보기" },
+        { name: "og:site_name", content: "Lazy maker" },
+        { name: "og:description", content: "나는 어떤 유형의 수업을 들을까" },
+        {
+          name: "og:image",
+          content:
+            "https://raw.githubusercontent.com/HiBixby/LazyMaker_Vue/fa889c38f1397e5148c8855a98652a5ed2855c9a/src/assets/logo.svg",
+        },
+      ],
+    };
   },
 };
 </script>
