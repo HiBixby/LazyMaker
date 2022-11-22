@@ -15,21 +15,19 @@
 </template>
 
 <script>
-import { useMeta } from 'vue-meta';
+import { useMeta } from "vue-meta";
 export default {
   name: "MainPage",
   props: {},
-  setup(){
+  setup() {
     useMeta({
-      title:"Lazy maker - 메인",
-      meta:[
-        {vmid:'og:title',property:'og:title',content:'Lazy maker'},
-        {vmid:'og:description',property:'og:description',content:'나는 어떤 유형의 수업을 들을까?'},
-        {vmid:'og:image',property:'og:image',content:'https://raw.githubusercontent.com/HiBixby/LazyMaker_Vue/2f530883610196c0889f266b6ec970bb6f8ea877/src/assets/logo.svg'},
-      ]
-    })
+      title: "Lazy maker - 메인",
+      og: {
+        title: "Lazy maker",
+        description: "나는 어떤 유형의 수업을 들을까?",
+      },
+    });
   },
-  
 };
 </script>
 
