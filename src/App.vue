@@ -4,21 +4,19 @@
 </template>
 
 <script>
-import { useMeta } from 'vue-meta';
+import { useMeta } from "vue-meta";
 
 /* eslint-disable */
 export default {
   name: "App",
   components: {},
-  setup(){
+  setup() {
     useMeta({
-      title:"Lazy maker",
-      meta:[
-        {vmid:'og:title',name:'og.title',content:'Lazy maker'}
-      ]
-    })
-    
-  }
+      title: "Lazy maker",
+      description: "내 유형 알아보기",
+      meta: [{ name: "og.title", content: "Lazy maker" }],
+    });
+  },
 };
 </script>
 
