@@ -14,7 +14,7 @@ export default {
     useMeta({
       title: "Lazy maker",
       description: "내 유형 알아보기",
-      meta: [{ name: "og.title", content: "Lazy maker" }],
+      meta: [{ property: "og.title", content: "Lazy maker" }],
     });
   },
 };
