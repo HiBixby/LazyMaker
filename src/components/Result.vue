@@ -93,7 +93,7 @@ export default {
       this.$router.push("/questions");
     },
     Redirect() {
-      const REDIRECT_URL = "https://2022.khvd.kr/";
+      const REDIRECT_URL = "https://khvd.kr/project/81";
       window.open(REDIRECT_URL);
     },
   },
