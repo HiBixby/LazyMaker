@@ -6,7 +6,7 @@ What I used
 
 Description
 * Lazy maker라는 이름의 수면 키트를 위한 유형 테스트 사이트
-* `npm run serve`로 실행 또는 [Demo page](https://hibixby.github.io/LazyMaker_Vue)로 실행
+* `npm run serve`로 실행 또는 [Demo page](https://hibixby.github.io/LazyMaker)로 실행
 
 특이사항
 * 이미 체크된 응답을 누르면 체크 해제 (radio type input에 toggle 기능 추가)
