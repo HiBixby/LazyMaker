@@ -5,7 +5,7 @@ What I used
 * vue-router
 
 Description
-* Lazy maker라는 이름의 수면 키트를 위한 유형 테스트 사이트
+* Lazy maker라는 이름의 수면 키트를 위한 **모바일** 유형 테스트 사이트
 * `npm run serve`로 실행 또는 [Demo page](https://hibixby.github.io/LazyMaker)로 실행
 
 특이사항
@@ -23,4 +23,4 @@ Description
 <img src="https://user-images.githubusercontent.com/66160055/203216633-1b62e978-179f-4145-9b8e-b3251da655b7.gif" height="668"/>
 
 ## Demo Page
-[유형 테스트 하러가기](https://hibixby.github.io/LazyMaker_Vue)
+[유형 테스트 하러가기](https://hibixby.github.io/LazyMaker)
