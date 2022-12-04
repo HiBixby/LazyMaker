@@ -21,6 +21,13 @@ export default {
 </script>
 
 <style>
+:root {
+  --cerulean-blue: #0371e8;
+  --carolina-blue: #83b3ff;
+  --baby-blue: #afceff;
+  --bright-grey: #f3f3f3;
+  --greyish: #afafaf;
+}
 html,
 body {
   height: 100%;
