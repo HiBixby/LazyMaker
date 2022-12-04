@@ -58,10 +58,12 @@ export default {
   letter-spacing: -0.68px;
   text-align: center;
 }
-.img {
+.logo {
+  width: 13.75rem;
   margin: 0 0 0.688rem 0;
 }
 .btn {
+  width: 9.625rem;
   margin: 0;
   font-stretch: normal;
   font-style: normal;
