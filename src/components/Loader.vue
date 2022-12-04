@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-full flex flex-col justify-center items-center">
-    <div class="w-[29%] h-[13%]">
+  <div class="loader-container">
+    <div class="loader-img">
       <svg
         version="1.1"
         id="L1"
@@ -35,7 +35,7 @@
         </circle>
       </svg>
     </div>
-    <div class="my-[1.438rem] text-[1.25rem] font-semibold">분석중...</div>
+    <div class="loader-text">분석중...</div>
   </div>
 </template>
 
@@ -56,4 +56,28 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+.loader-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loader-img {
+  width: 7.063rem;
+  height: 7.063rem;
+}
+.loader-text {
+  width: 4.125rem;
+  height: 1.5rem;
+  margin-top: 1.438rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.35;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+</style>
