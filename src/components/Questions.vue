@@ -91,56 +91,57 @@ export default {
   props: {},
   methods: {
     CalculateType() {
+      let selected = this.selected.map((a) => parseInt(a));
+      /**
+       *
+       * @param {number} start 시작 인덱스
+       * @param {number} end 끝 인덱스
+       * @returns {number} 해당 구간의 합을 반환한다
+       */
+      function CalculateScoreOfEachType(start, end) {
+        return selected.slice(start, end).reduce((acc, cur) => acc + cur);
+      }
       let score = [
         {
           type: "A",
-          score: this.selected
-            .slice(1, 5)
-            .reduce((a, b) => parseInt(a) + parseInt(b)),
+          score: CalculateScoreOfEachType(1, 5),
         },
         {
           type: "B",
-          score: this.selected
-            .slice(5, 9)
-            .reduce((a, b) => parseInt(a) + parseInt(b)),
+          score: CalculateScoreOfEachType(5, 9),
         },
         {
           type: "C",
-          score: this.selected
-            .slice(9, 13)
-            .reduce((a, b) => parseInt(a) + parseInt(b)),
+          score: CalculateScoreOfEachType(9, 13),
         },
       ];
-      //예외
+      //예외처리
       //13~14
-      for (let i = 13; i < 15; i++) {
-        if (this.selected[i] == 1) {
-          score[0].score++;
-        }
-      }
+      selected.slice(13, 15).forEach((answer) => {
+        if (answer === 1) score[0].score++;
+      });
+
       //15~16
-      for (let i = 15; i < 17; i++) {
-        if (this.selected[i] == 1) {
-          score[1].score++;
-        }
-      }
+      selected.slice(15, 17).forEach((answer) => {
+        if (answer === 1) score[1].score++;
+      });
+
       //17~18
-      for (let i = 17; i < 19; i++) {
-        if (this.selected[i] == 1) {
-          score[2].score++;
-        }
-      }
+      selected.slice(17, 19).forEach((answer) => {
+        if (answer === 1) score[2].score++;
+      });
+
       //19
-      if (this.selected[19] == 1) {
+      if (selected[19] === 1) {
         score[1].score++;
         score[2].score++;
-      } else if (this.selected[19] == -1) {
+      } else if (selected[19] === -1) {
         score[0].score++;
       }
       //20
-      if (this.selected[20] == 1) {
+      if (selected[20] === 1) {
         score[2].score++;
-      } else if (this.selected[20] == -1) {
+      } else if (selected[20] === -1) {
         score[1].score++;
       }
 
