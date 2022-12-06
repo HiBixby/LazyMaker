@@ -1,14 +1,12 @@
 <template>
-  <div class="main-container">
+  <div class="wrapper">
     <div class="title">나는 어떤 유형의<br />수업을 들을까?</div>
     <img
       class="logo"
       src="../assets/logo.svg"
       alt="머리를 짚고 필기하는 여자 그림"
     />
-    <router-link
-      class="btn text-white text-[0.813rem] font-bold rounded-md bg-custom-blue py-[0.8rem] w-[39.5%] h-[4.7%]"
-      to="/questions"
+    <router-link class="btn__start" to="/questions"
       >내 유형 알아보기</router-link
     >
   </div>
@@ -39,7 +37,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.main-container {
+.wrapper {
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -62,12 +60,20 @@ export default {
   width: 13.75rem;
   margin: 0 0 0.688rem 0;
 }
-.btn {
+.btn__start {
   width: 9.625rem;
-  margin: 0;
+  height: 2.5rem;
+  padding-top: 0.813rem;
+  border-radius: 7px;
+  background-color: #0371e8;
+  font-family: Pretendard;
+  font-size: 0.813rem;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.15;
   letter-spacing: normal;
+  text-align: center;
+  color: white;
 }
 </style>

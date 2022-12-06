@@ -1,6 +1,6 @@
 <template>
-  <div class="loader-container">
-    <div class="loader-img">
+  <div class="loader">
+    <div class="loader__img">
       <svg
         version="1.1"
         id="L1"
@@ -35,7 +35,7 @@
         </circle>
       </svg>
     </div>
-    <div class="loader-text">분석중...</div>
+    <div class="loader__text">분석중...</div>
   </div>
 </template>
 
@@ -44,7 +44,6 @@ export default {
   name: "LoaderPage",
   props: {},
   created() {
-    console.log(this.$route.query.mytype);
     setTimeout(() => {
       this.$router.push({
         name: "결과",
@@ -57,18 +56,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.loader-container {
+.loader {
   min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.loader-img {
+.loader__img {
   width: 7.063rem;
   height: 7.063rem;
 }
-.loader-text {
+.loader__text {
   width: 4.125rem;
   height: 1.5rem;
   margin-top: 1.438rem;
